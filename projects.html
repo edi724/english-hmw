@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My English Projects</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color:white;
+    min-height:100vh;
+}
+
+/* NAV */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+    background:black;
+    position:sticky;
+    top:0;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+nav ul{
+    display:flex;
+    gap:20px;
+    list-style:none;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+}
+
+nav a:hover{
+    color:#60a5fa;
+}
+
+/* PROJECTS */
+.projects{
+    padding:50px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+}
+
+.project{
+    width:300px;
+    padding:18px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:12px;
+    cursor:pointer;
+    transition:0.25s;
+    text-align:center;
+}
+
+.project:hover{
+    transform:scale(1.05);
+    background:rgba(255,255,255,0.1);
+}
+
+/* OVERLAY */
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.75);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    z-index:999;
+    backdrop-filter: blur(6px);
+}
+
+.overlay-content{
+    background:#111827;
+    width:min(750px, 90vw);
+    max-height:80vh;
+    overflow:auto;
+    padding:30px;
+    border-radius:16px;
+    position:relative;
+    box-shadow:0 20px 60px rgba(0,0,0,0.6);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+#modal-title{
+    font-size:26px;
+    margin-bottom:15px;
+}
+
+#modal-text{
+    font-size:16px;
+    line-height:1.7;
+    color:#e5e7eb;
+    white-space:pre-wrap;
+}
+
+.close-btn{
+    position:absolute;
+    top:12px;
+    right:14px;
+    font-size:22px;
+    cursor:pointer;
+    opacity:0.8;
+}
+
+.close-btn:hover{
+    opacity:1;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">Eduard's Portfolio</div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Projects</a></li>
+    </ul>
+</nav>
+
+<div class="projects">
+    <h1>My English School Projects</h1>
+
+    <div class="project" onclick="openModal('pr1')">Kylie e-mail</div>
+    <div class="project" onclick="openModal('pr2')">Lost object</div>
+    <div class="project" onclick="openModal('pr3')">Marcia e-mail</div>
+    <div class="project" onclick="openModal('pr4')">My favourite band</div>
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeModal(event)">
+    <div class="overlay-content" onclick="event.stopPropagation()">
+        <div class="close-btn" onclick="closeModal()">✖</div>
+        <h2 id="modal-title"></h2>
+        <div id="modal-text"></div>
+    </div>
+</div>
+
+<script>
+const projects = {
+    pr1: {
+        title: "Kylie e-mail",
+        text:
+`										
+Hi Kylie!
+
+Thanks for asking, I'm enjoying my new school a lot! I've made some friends, they're very nice to me and they sometimes help me with my homework!
+I also have a lot of exams this year, it seems like every year we have more exams.
+My favourite subject, excluding sports class, of course, is ICT, because I'm very good with computers, it's my environment. The subject that I hate the most is geography, our teacher fills us with information.
+What subjects do you hate/love?
+
+Cheers,
+Eduard 
+`
+    },
+
+    pr2: {
+        title: "Lost object",
+        text:
+`About two month ago I lost my computer mouse,I lost it somewhere in my room. I searched for it everywhere: under my desk, under my bed, behind my TV, it was nowhere to be found. I felt really sad, because I couldn't play my favourite computer games! To this day I still haven't found it. I think it grew legs and ran away. 
+`
+    },
+
+    pr3: {
+        title: "Marcia e-mail",
+        text:
+`Dear Marcia,
+
+I'm fine, thank you! I really miss you too and I'm happy to receive your letter.
+Your New Year's Eve party sounded amazing!
+I spent New Year's at home with my family. We had dinner, talked, and watched fireworks.
+My resolutions are better grades and more exercise.
+Write back soon!
+
+Love,
+Kate`
+    },
+
+    pr4: {
+        title: "My favourite band",
+        text:
+`ABBA is a Swedish pop band formed in 1972 by Agnetha Fältskog, Björn Ulvaeus, Benny Andersson, and Anni-Frid Lyngstad. The band's name comes from the first letters of their names. 
+They became famous in 1974 after winning the Eurovision Song Contest with the song “Waterloo.” The victory made them internationally popular and helped launch their music career. 
+ABBA was mainly active for about 10 years (1972-1982) and became one of the most successful pop groups of the 1970s. 
+Some of their most famous songs include “Dancing Queen”,  “Mamma Mia”,  “Gimme! Gimme! Gimme!”. 
+I've liked them since about 1 year ago.
+I like them because they make very catchy songs.
+`
+    }
+};
+
+function openModal(id){
+    const p = projects[id];
+    if(!p) return;
+
+    document.getElementById("modal-title").innerText = p.title;
+    document.getElementById("modal-text").innerText = p.text;
+    document.getElementById("overlay").style.display = "flex";
+}
+
+function closeModal(e){
+    if(e && e.target !== e.currentTarget) return;
+    document.getElementById("overlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>

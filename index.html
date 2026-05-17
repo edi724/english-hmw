@@ -1,8 +1,169 @@
-<html>
-  <head>
-    <title>Home Page</title>
-  </head>
-  <body>
-    <h1>Hello</h1>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Eduard's English Portfolio</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body{
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color:white;
+        min-height:100vh;
+    }
+
+    nav{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:20px 50px;
+        background: rgb(0, 0, 0);
+        backdrop-filter: blur(10px);
+        position: sticky;
+        top:0;
+    }
+
+    .logo{
+        font-size:24px;
+        font-weight:bold;
+    }
+
+    nav ul{
+        display:flex;
+        gap:20px;
+        list-style:none;
+    }
+
+    nav a{
+        color:white;
+        text-decoration:none;
+        transition:0.3s;
+    }
+
+    nav a:hover{
+        color:#60a5fa;
+    }
+
+    .hero{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        text-align:center;
+        padding:100px 20px;
+    }
+
+    .hero h1{
+        font-size:60px;
+        margin-bottom:20px;
+    }
+
+    .hero p{
+        max-width:700px;
+        line-height:1.7;
+        font-size:18px;
+        opacity:0.9;
+    }
+
+    .cards{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+        gap:30px;
+        padding:50px;
+    }
+
+    .card{
+        background: rgba(255,255,255,0.08);
+        padding:30px;
+        border-radius:20px;
+        transition:0.3s;
+        backdrop-filter: blur(8px);
+    }
+
+    .card:hover{
+        transform:translateY(-5px);
+        background: rgba(255,255,255,0.12);
+    }
+
+    .card h2{
+        margin-bottom:15px;
+        color:#93c5fd;
+    }
+
+    .btn{
+        display:inline-block;
+        margin-top:20px;
+        padding:12px 20px;
+        background:#3b82f6;
+        border-radius:10px;
+        color:white;
+        text-decoration:none;
+        transition:0.3s;
+    }
+
+    .btn:hover{
+        background:#2563eb;
+    }
+
+    footer{
+        text-align:center;
+        padding:30px;
+        opacity:0.7;
+    }
+    .hero-text{
+        font-size:18px;
+        max-width:700px;
+        line-height:1.7;
+        white-space:normal;
+        text-align:center;
+        opacity:0.9;
+    }
+
+    @media(max-width:700px){
+        .hero h1{
+            font-size:42px;
+        }
+
+        nav{
+            padding:20px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">Eduard's Portfolio</div>
+
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <img src="picture.jpeg" alt="Eduard's picture" style="width: 500px; height: 550px; object-fit: cover;"/>
+    <p class="hero-text">
+    Hi, I'm Eduard.<br>
+    I was born in Romania in 2012, in a city called Timisoara. I'm 13 years old.<br>
+    I am a student at a school called “Școala Gimnazială Nr. 27”, and I'm in 7th grade.<br>
+    In the future, I hope to become a software engineer, an AI researcher, or maybe start my own business. It is going to be a huge challenge and it will require a lot of hard work, but I think I can do it.
+    </p>
+
+    <a class="btn" href="projects.html">View My Projects</a>
+</section>
+
+<footer>
+    © 2026 Eduard's English Portfolio
+</footer>
+
+</body>
 </html>
